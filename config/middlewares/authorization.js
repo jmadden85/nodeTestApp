@@ -33,3 +33,15 @@ exports.article = {
         next();
     }
 };
+
+/*******
+ * Question authorizations routing middleware
+ *******/
+exports.question = {
+    hasAuthorization: function (req, res, next) {
+        if (req.question.user.id != req.user.id) {
+            return res.send(401, 'User is not authorized');
+        }
+        next();
+    }
+};

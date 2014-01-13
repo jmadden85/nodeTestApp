@@ -72,6 +72,17 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
+    //Questions Routes
+    var questions = require('../app/controllers/questions');
+    app.get('/questions', questions.all);
+    app.post('/questions', auth.requiresLogin, questions.create);
+    app.get('/questions/:questionId', questions.show);
+    app.put('/questions/:questionId', auth.requiresLogin, auth.question.hasAuthorization, questions.update);
+    app.del('/questions/:questionId', auth.requiresLogin, auth.question.hasAuthorization, questions.destroy);
+
+    //Finish up with setting up the questionId param
+    app.param('questionId', questions.question);
+
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);

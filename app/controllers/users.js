@@ -1,62 +1,62 @@
 'use strict';
 
-/**
+/*******
  * Module dependencies.
- */
-var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+ ******/
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
-/**
+/*******
  * Auth callback
- */
-exports.authCallback = function(req, res) {
+ ******/
+exports.authCallback = function (req, res) {
     res.redirect('/');
 };
 
-/**
+/*******
  * Show login form
- */
-exports.signin = function(req, res) {
+ ******/
+exports.signin = function (req, res) {
     res.render('users/signin', {
         title: 'Signin',
         message: req.flash('error')
     });
 };
 
-/**
+/*******
  * Show sign up form
- */
-exports.signup = function(req, res) {
+ ******/
+exports.signup = function (req, res) {
     res.render('users/signup', {
         title: 'Sign up',
         user: new User()
     });
 };
 
-/**
+/*******
  * Logout
- */
-exports.signout = function(req, res) {
+ ******/
+exports.signout = function (req, res) {
     req.logout();
     res.redirect('/');
 };
 
-/**
+/*******
  * Session
- */
-exports.session = function(req, res) {
+ ******/
+exports.session = function (req, res) {
     res.redirect('/');
 };
 
-/**
+/*******
  * Create user
- */
-exports.create = function(req, res, next) {
+ ******/
+exports.create = function (req, res, next) {
     var user = new User(req.body);
     var message = null;
 
     user.provider = 'local';
-    user.save(function(err) {
+    user.save(function (err) {
         if (err) {
             switch (err.code) {
                 case 11000:
@@ -72,7 +72,7 @@ exports.create = function(req, res, next) {
                 user: user
             });
         }
-        req.logIn(user, function(err) {
+        req.logIn(user, function (err) {
             if (err) {
                 return next(err);
             }
@@ -81,22 +81,22 @@ exports.create = function(req, res, next) {
     });
 };
 
-/**
+/*******
  * Send User
- */
-exports.me = function(req, res) {
+ ******/
+exports.me = function (req, res) {
     res.jsonp(req.user || null);
 };
 
-/**
+/*******
  * Find user by id
- */
-exports.user = function(req, res, next, id) {
+ ******/
+exports.user = function (req, res, next, id) {
     User
         .findOne({
             _id: id
         })
-        .exec(function(err, user) {
+        .exec(function (err, user) {
             if (err) {
                 return next(err);
             }
