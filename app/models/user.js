@@ -23,6 +23,10 @@ var UserSchema = new Schema({
     answers: [AnswerSchema],
     hashed_password: String,
     provider: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     salt: String,
     facebook: {},
     twitter: {},

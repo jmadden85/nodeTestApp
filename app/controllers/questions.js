@@ -34,7 +34,7 @@ exports.create = function (req, res) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: question
+                question: question
             });
         } else {
             res.jsonp(question);
@@ -45,13 +45,13 @@ exports.create = function (req, res) {
 exports.update = function (req, res) {
     var question = req.question;
 
-    question = _.extend(article, req.body);
+    question = _.extend(question, req.body);
 
     question.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: question
+                question: question
             });
         } else {
             res.jsonp(question);
@@ -69,10 +69,10 @@ exports.destroy = function (req, res) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                question: question
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(question);
         }
     });
 };
