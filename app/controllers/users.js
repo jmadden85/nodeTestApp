@@ -44,9 +44,10 @@ exports.signout = function (req, res) {
 /*******
  * Session
  ******/
+//todo: fix this /#!/ bullshit
 exports.session = function (req, res) {
     if (req.user.isAdmin) {
-        res.redirect('/admin');
+        res.redirect('/#!/admin');
     } else {
         res.redirect('/');
     }

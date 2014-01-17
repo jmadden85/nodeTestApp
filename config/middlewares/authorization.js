@@ -14,7 +14,7 @@ exports.requiresLogin = function(req, res, next) {
  * Admin login required routing middleware
  ******/
 exports.requiresAdmin = function (req, res, next) {
-    console.log(req.user);
+    console.log(!req.isAuthenticated, !req.user.isAdmin);
     if (!req.isAuthenticated() || !req.user.isAdmin) {
         return res.send(401, 'User is not authorized');
     }
@@ -26,7 +26,7 @@ exports.requiresAdmin = function (req, res, next) {
  ******/
 exports.user = {
     hasAuthorization: function(req, res, next) {
-        if (req.profile.id != req.user.id) {
+        if (req.profile.id !== req.user.id) {
             return res.send(401, 'User is not authorized');
         }
         next();
@@ -50,7 +50,7 @@ exports.article = {
  *******/
 exports.question = {
     hasAuthorization: function (req, res, next) {
-        if (req.question.user.id !== req.user.id || !req.user.id.isAdmin) {
+        if (req.question.user.id !== req.user.id || !req.user.isAdmin) {
             return res.send(401, 'User is not authorized');
         }
         next();

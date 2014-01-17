@@ -31,7 +31,7 @@ angular.module('mean.questions').controller('QuestionsController',
                     }
                 } else {
                     $scope.question.$remove();
-                    $location.path('questions');
+                    $location.path('admin/questions');
                 }
             };
 
