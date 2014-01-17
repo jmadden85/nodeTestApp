@@ -15,7 +15,7 @@ angular.module('mean.questions').controller('QuestionsController',
                     content: this.content
                 });
                 question.$save(function (response) {
-                    $location.path('questions/' + response._id);
+                    $location.path('admin/questions/' + response._id);
                 });
                 this.content = '';
             };
@@ -43,7 +43,7 @@ angular.module('mean.questions').controller('QuestionsController',
                 question.updated.push(new Date().getTime());
 
                 question.$update(function () {
-                    $location.path('questions/' + question._id);
+                    $location.path('admin/questions/' + question._id);
                 });
             };
 

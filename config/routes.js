@@ -75,10 +75,10 @@ module.exports = function(app, passport, auth) {
     //Questions Routes
     var questions = require('../app/controllers/questions');
     app.get('/questions', questions.all);
-    app.post('/questions', auth.requiresLogin, questions.create);
+    app.post('/questions', auth.requiresAdmin, questions.create);
     app.get('/questions/:questionId', questions.show);
-    app.put('/questions/:questionId', auth.requiresLogin, auth.question.hasAuthorization, questions.update);
-    app.del('/questions/:questionId', auth.requiresLogin, auth.question.hasAuthorization, questions.destroy);
+    app.put('/questions/:questionId', auth.requiresAdmin, auth.question.hasAuthorization, questions.update);
+    app.del('/questions/:questionId', auth.requiresAdmin, auth.question.hasAuthorization, questions.destroy);
 
     //Finish up with setting up the questionId param
     app.param('questionId', questions.question);

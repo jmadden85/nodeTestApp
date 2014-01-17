@@ -11,10 +11,10 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         'link': 'articles/create'
     }, {
         'title': 'Questions',
-        'link': 'questions'
+        'link': 'admin/questions'
     }, {
         'title': 'Create New Question',
-        'link': 'questions/create'
+        'link': 'admin/questions/create'
     }];
     
     $scope.isCollapsed = false;
