@@ -1,21 +1,21 @@
 'use strict';
 
-/*******
+/*************************************************
  * Module dependencies.
- ******/
+*************************************************/
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-/*******
+/*************************************************
  * Auth callback
- ******/
+*************************************************/
 exports.authCallback = function (req, res) {
     res.redirect('/');
 };
 
-/*******
+/*************************************************
  * Show login form
- ******/
+*************************************************/
 exports.signin = function (req, res) {
     res.render('users/signin', {
         title: 'Signin',
@@ -23,9 +23,9 @@ exports.signin = function (req, res) {
     });
 };
 
-/*******
+/*************************************************
  * Show sign up form
- ******/
+*************************************************/
 exports.signup = function (req, res) {
     res.render('users/signup', {
         title: 'Sign up',
@@ -33,17 +33,17 @@ exports.signup = function (req, res) {
     });
 };
 
-/*******
+/*************************************************
  * Logout
- ******/
+*************************************************/
 exports.signout = function (req, res) {
     req.logout();
     res.redirect('/');
 };
 
-/*******
+/*************************************************
  * Session
- ******/
+*************************************************/
 //todo: fix this /#!/ bullshit
 exports.session = function (req, res) {
     if (req.user.isAdmin) {
@@ -53,9 +53,9 @@ exports.session = function (req, res) {
     }
 };
 
-/*******
+/*************************************************
  * Create user
- ******/
+*************************************************/
 exports.create = function (req, res, next) {
     var user = new User(req.body);
     var message = null;
@@ -86,16 +86,16 @@ exports.create = function (req, res, next) {
     });
 };
 
-/*******
+/*************************************************
  * Send User
- ******/
+*************************************************/
 exports.me = function (req, res) {
     res.jsonp(req.user || null);
 };
 
-/*******
+/*************************************************
  * Find user by id
- ******/
+*************************************************/
 exports.user = function (req, res, next, id) {
     User
         .findOne({

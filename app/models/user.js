@@ -1,8 +1,8 @@
 'use strict';
 
-/*******
+/*************************************************
  * Module dependencies
- *******/
+*************************************************/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var AnswerSchema = mongoose.model('Answer');
@@ -10,9 +10,9 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 
-/*******
+/*************************************************
  * User Schema
- *******/
+*************************************************/
 var UserSchema = new Schema({
     name: String,
     email: String,
@@ -34,9 +34,9 @@ var UserSchema = new Schema({
     google: {}
 });
 
-/*******
+/*************************************************
  * Virtuals
- *******/
+*************************************************/
 UserSchema.virtual('password').set(function (password) {
     this._password = password;
     this.salt = this.makeSalt();
@@ -45,9 +45,9 @@ UserSchema.virtual('password').set(function (password) {
     return this._password;
 });
 
-/*******
+/*************************************************
  * Validations
- *******/
+*************************************************/
 var validatePresenceOf = function (value) {
     return value && value.length;
 };
@@ -86,9 +86,9 @@ UserSchema.path('hashed_password').validate(function (hashed_password) {
 }, 'Password cannot be blank');
 
 
-/*******
+/*************************************************
  * Pre save hook
- *******/
+*************************************************/
 UserSchema.pre('save', function (next) {
     if (!this.isNew) {
         return next();
@@ -101,9 +101,9 @@ UserSchema.pre('save', function (next) {
     }
 });
 
-/*******
+/*************************************************
  * Methods
- *******/
+*************************************************/
 UserSchema.methods = {
     /**
      * Authenticate - check if the passwords are the same

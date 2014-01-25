@@ -12,7 +12,9 @@ angular.module('mean.questions').controller('QuestionsController',
 
             $scope.create = function() {
                 var question = new Questions({
-                    content: this.content
+                    title: this.title,
+                    content: this.content,
+                    category: this.category
                 });
                 question.$save(function (response) {
                     $location.path('admin/questions/' + response._id);

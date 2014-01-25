@@ -8,11 +8,9 @@ angular.module('mean',
         'ui.bootstrap',
         'ui.route',
         'mean.system',
-        'mean.articles',
         'mean.questions'
     ]
 );
 
 angular.module('mean.system', []);
-angular.module('mean.articles', []);
 angular.module('mean.questions', []);

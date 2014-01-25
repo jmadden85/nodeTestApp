@@ -1,10 +1,22 @@
 <section data-ng-controller="QuestionsController" data-ng-init="findOne()">
     <form class="form-horizontal" data-ng-submit="update()">
         <div class="control-group">
+            <label class="control-label" for="title">Title</label>
+            <div class="controls">
+                <input type="text" data-ng-model="question.title" id="title" placeholder="Title" required>
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label" for="content">Content</label>
             <div class="controls">
-                <textarea data-ng-model="question.content" id="content" cols="30" rows="10" placeholder="Question">
+                <textarea data-ng-model="question.content" id="content" cols="30" rows="10" placeholder="Question" required>
                 </textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="category">Category</label>
+            <div class="controls">
+                <input type="text" data-ng-model="question.category" id="category" placeholder="Category" required>
             </div>
         </div>
         <div class="control-group">
