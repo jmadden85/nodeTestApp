@@ -1,6 +1,11 @@
 <section data-ng-controller="QuestionsController" data-ng-init="findOne()">
-    <span>{{question.created | date:'medium'}}</span>/
-    <span>{{question.user.name}}</span>
+    <span>
+        {{question.created | date:'medium'}}
+    </span>
+     |
+    <span>
+        {{question.user.name}}
+    </span>
     <div data-ng-show="global.user._id === question.user._id">
         <a class="btn" href="/#!/admin/questions/{{question._id}}/edit">
             <i class="icon-edit"></i>
@@ -9,7 +14,13 @@
             <i class="icon-trash"></i>
         </a>
     </div>
-    <h3>{{question.title}}</h3>
-    <div>{{question.content}}</div>
-    <a data-ng-href="#!/admin/questions/category/{{question.category}}" class="tags">{{question.category}}</a>
+    <h3>
+        {{question.title}}
+    </h3>
+    <div>
+        {{question.content}}
+    </div>
+    <a data-ng-href="#!/admin/questions/category/{{question.category}}" class="tags">
+        {{question.category}}
+    </a>
 </section>

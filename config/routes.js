@@ -64,7 +64,7 @@ module.exports = function(app, passport, auth) {
     //Questions Routes
     var questions = require('../app/controllers/questions');
     app.get('/questions', questions.all);
-    app.get('/questions/category/:category', questions.showCategory);
+    app.get('/questions/category/:category', auth.requiresAdmin, questions.showCategory);
     app.post('/questions', auth.requiresAdmin, questions.create);
     app.get('/questions/:questionId', questions.show);
     app.put('/questions/:questionId', auth.requiresAdmin, auth.question.hasAuthorization, questions.update);

@@ -55,6 +55,14 @@ angular.module('mean.questions').controller('QuestionsController',
                 });
             };
 
+            $scope.findCategory = function () {
+                Questions.get({
+                    category: $routeParams.category
+                }, function (questions) {
+                    $scope.questions = questions;
+                });
+            };
+
             $scope.findOne = function() {
                 Questions.get({
                     questionId: $routeParams.questionId

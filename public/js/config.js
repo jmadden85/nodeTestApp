@@ -16,7 +16,7 @@ angular.module('mean').config(['$routeProvider',
             when('/admin/questions', {
                 templateUrl: 'views/admin/questions/list.html'
             }).
-            when('/questions/category/:category', {
+            when('/admin/questions/category/:category', {
                 templateUrl: 'views/admin/questions/list.html'
             }).
             when('/admin/questions/create', {
