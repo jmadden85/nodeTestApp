@@ -45,7 +45,7 @@ QuestionSchema.path('content').validate(function (content) {
 /*************************************************
  * Questions Statics
 *************************************************/
-QuestionSchema.statics.load = function(id, cb) {
+QuestionSchema.statics.load = function (id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);

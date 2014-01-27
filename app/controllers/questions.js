@@ -104,17 +104,21 @@ exports.all = function (req, res) {
 };
 
 /*************************************************
- * Find questions by category
+ * Show all questions in a category
  **************************************************/
-exports.question = function (req, res, next, id) {
-    Question.load(id, function (err, question) {
+exports.category = function (req, res, next, category) {
+    Question.find({category: category}, function (err, questions) {
         if (err) {
             return next(err);
         }
-        if (!question) {
-            return next(new Error('Failed to load question ' + id));
+        if (!questions) {
+            return next(new Error('Failed to load questions with category ' + category));
         }
-        req.question = question;
+        req.questions = questions;
         next();
     });
+};
+
+exports.showCategory = function (req, res) {
+    res.jsonp(req.questions);
 };

@@ -4,8 +4,7 @@
             <span>{{question.created | date:'medium'}}</span> /
             <span>{{question.user.name}}</span>
             <h2><a data-ng-href="#!/admin/questions/{{question._id}}">{{question.title}}</a></h2>
-            <div>{{question.content}}</div>
-            <div>{{question.category}}</div>
+            <a data-ng-href="#!/admin/questions/category/{{question.category}}" class="tags">{{question.category}}</a>
         </li>
     </ul>
     <h1 data-ng-hide="!questions || questions.length">No questions yet. <br> Why don't you <a href="/#!/admin/questions/create">Create One</a>?</h1>

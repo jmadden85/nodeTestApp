@@ -64,6 +64,7 @@ module.exports = function(app, passport, auth) {
     //Questions Routes
     var questions = require('../app/controllers/questions');
     app.get('/questions', questions.all);
+    app.get('/questions/category/:category', questions.showCategory);
     app.post('/questions', auth.requiresAdmin, questions.create);
     app.get('/questions/:questionId', questions.show);
     app.put('/questions/:questionId', auth.requiresAdmin, auth.question.hasAuthorization, questions.update);
@@ -71,6 +72,7 @@ module.exports = function(app, passport, auth) {
 
     //Finish up with setting up the questionId param
     app.param('questionId', questions.question);
+    app.param('category', questions.category);
 
     //Home route
     var index = require('../app/controllers/index');
