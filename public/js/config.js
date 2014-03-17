@@ -5,34 +5,44 @@ angular.module('mean').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/questions', {
-                templateUrl: 'views/questions/list.html'
+                templateUrl: 'views/questions/list.html',
+                requiresAdmin: false
             }).
             when('/questions/:questionId', {
-                templateUrl: 'views/questions/view.html'
+                templateUrl: 'views/questions/view.html',
+                requiresAdmin: false
             }).
             when('/admin', {
-                templateUrl: 'views/admin/index.html'
+                templateUrl: 'views/admin/index.html',
+                requiresAdmin: true
             }).
             when('/admin/questions', {
-                templateUrl: 'views/admin/questions/list.html'
+                templateUrl: 'views/admin/questions/list.html',
+                requiresAdmin: true
             }).
             when('/admin/questions/category/:category', {
-                templateUrl: 'views/admin/questions/list.html'
+                templateUrl: 'views/admin/questions/list.html',
+                requiresAdmin: true
             }).
             when('/admin/questions/create', {
-                templateUrl: 'views/admin/questions/create.html'
+                templateUrl: 'views/admin/questions/create.html',
+                requiresAdmin: true
             }).
             when('/admin/questions/:questionId/edit', {
-                templateUrl: 'views/admin/questions/edit.html'
+                templateUrl: 'views/admin/questions/edit.html',
+                requiresAdmin: true
             }).
             when('/admin/questions/:questionId', {
-                templateUrl: 'views/admin/questions/view.html'
+                templateUrl: 'views/admin/questions/view.html',
+                requiresAdmin: true
             }).
             when('/', {
-                templateUrl: 'views/index.html'
+                templateUrl: 'views/index.html',
+                requiresAdmin: false
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/',
+                requiresAdmin: false
             });
     }
 ]);

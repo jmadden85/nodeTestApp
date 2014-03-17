@@ -6,7 +6,7 @@ angular.module('mean.system').controller('HeaderController',
         'Global',
         function ($scope, Global) {
             $scope.global = Global;
-            if ($scope.global.user.isAdmin === true) {
+            if ($scope.global.user && $scope.global.user.isAdmin === true) {
                 $scope.menu = [{
                     'title': 'Test App',
                     'link': 'admin',
