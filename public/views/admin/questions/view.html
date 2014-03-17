@@ -6,7 +6,7 @@
     <span>
         {{question.user.name}}
     </span>
-    <div data-ng-show="global.user._id === question.user._id">
+    <div data-ng-show="global.user._id === question.user._id && global.user.isAdmin === true">
         <a class="btn" href="/#!/admin/questions/{{question._id}}/edit">
             <i class="icon-edit"></i>
         </a>
