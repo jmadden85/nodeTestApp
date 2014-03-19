@@ -4,9 +4,8 @@ angular.module('mean',
     [
         'ngCookies',
         'ngResource',
-        'ngRoute',
         'ui.bootstrap',
-        'ui.route',
+        'ui.router',
         'mean.system',
         'mean.questions'
     ]

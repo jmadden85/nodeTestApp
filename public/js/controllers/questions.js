@@ -3,11 +3,11 @@
 angular.module('mean.questions').controller('QuestionsController',
     [
         '$scope',
-        '$routeParams',
+        '$stateParams',
         '$location',
         'Global',
         'Questions',
-        function ($scope, $routeParams, $location, Global, Questions) {
+        function ($scope, $stateParams, $location, Global, Questions) {
             $scope.global = Global;
 
             $scope.create = function() {
